@@ -170,9 +170,14 @@ class DataCollector():
 
   def save_data(self):
     """ save data """
-    with open("/sd/data.csv", "a") as f:
-      print(self.record)
-      f.write(f"{self.record}\n")
+    if HAVE_SD:
+        with open("/sd/data.csv", "a") as f:
+            print(self.record)
+            f.write(f"{self.record}\n")
+    else:
+        # Ideally, this would write to internal space... but that would require a remount.
+        print("Warning: No SD card in use.")
+        print(f"{self.record}\n")
   
   # --- update display   -----------------------------------------------------
 
