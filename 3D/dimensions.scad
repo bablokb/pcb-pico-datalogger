@@ -14,7 +14,7 @@ $fn = 48;
 fuzz = 0.01;
 w2 = 0.86;                 // 2 walls Prusa3D
 w4 = 1.67;                 // 4 walls Prusa3D
-gap = 0.5;                 // gap pcb to case
+gap = 0.2;                 // gap pcb to case
 
 x_pcb = 80;               // pcb-dimensions
 y_pcb = 90;
@@ -25,8 +25,11 @@ xy_sup = 8;
 z_sup  = 13;                // hight of pcb-support (with display)
 d_sup  = 2.5;               // diameter mounting-hole
 
-xdelta = 5;
-ydelta = 5;
+dt_sup = 4;                 // diameter thread pocket
+ht_sup  = 5.7;              // height of thread pocket
+
+xdelta = gap;
+ydelta = gap;
 xsize = x_pcb+2*xdelta;    // inner size
 ysize = y_pcb+2*ydelta;
 
