@@ -48,6 +48,25 @@ module corpus_bottom() {
   move([-x_sup_off-fuzz,-y_sup_off-fuzz,0]) pcb_support();
   move([x_sup_off+fuzz,y_sup_off+fuzz,0]) pcb_support();
   move([x_sup_off+fuzz,-y_sup_off-fuzz,0]) pcb_support();
+
+  // cutout LoRa
+  move([x_lora,y_lora,0]) cutout(width1=y2_lora-y1_lora,
+                                 width2=yw_lora,depth=d_lora,pos=LEFT);
+}
+
+// --- cutout   --------------------------------------------------------------
+
+module cutout(width1,width2,depth,pos) {
+  z = b + z_sup + z_pcb;
+  if (pos == FRONT) {
+    xrot(-90) prismoid(size1=[width1,z], size2=[width2,z], h=depth,anchor=BACK);
+  } else if (pos == BACK) {
+    xrot(90) prismoid(size1=[width1,z], size2=[width2,z], h=depth,anchor=FRONT);
+  } else if (pos == LEFT) {
+    yrot(90) prismoid(size1=[z,width1], size2=[z,width2], h=depth,anchor=RIGHT);
+  } else if (pos == RIGHT) {
+    yrot(-90) prismoid(size1=[z,width1], size2=[z,width2], h=depth,anchor=LEFT);
+  }
 }
 
 // --- bottom of case   ------------------------------------------------------
@@ -55,8 +74,12 @@ module corpus_bottom() {
 module case_bottom() {
   difference() {
     corpus_bottom();
+    // cutout LoRa
+    move([x_lora-w4,y_lora,0]) cutout(width1=y2_lora-y1_lora,
+                                      width2=yw_lora,depth=d_lora,pos=LEFT);
     // cutout display
-    move([x_display_off,y_display_off,-fuzz]) cuboid([x_display,y_display,b+2*fuzz],anchor=BOTTOM+CENTER);
+    move([x_display_off,y_display_off,-fuzz])
+                 cuboid([x_display,y_display,b+2*fuzz],anchor=BOTTOM+CENTER);
   }
 }
 
@@ -64,4 +87,3 @@ module case_bottom() {
 
 // pcb_support(z_sup);
 case_bottom();
-//cutout(x2_sd-x1_sd,add=ydelta,pos=RIGHT);

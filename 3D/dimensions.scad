@@ -16,17 +16,18 @@ w2 = 0.86;                 // 2 walls Prusa3D
 w4 = 1.67;                 // 4 walls Prusa3D
 gap = 0.2;                 // gap pcb to case
 
-x_pcb = 80;               // pcb-dimensions
+x_pcb = 80;                // pcb-dimensions
 y_pcb = 90;
 z_pcb = 1.6;
 r_pcb = 3.0;               // corner radius
 
 xy_sup = 8;
-z_sup  = 13;                // hight of pcb-support (with display)
-d_sup  = 2.5;               // diameter mounting-hole
+z_sup  = 13;               // hight of pcb-support (with display)
+//z_sup  = 2;                // hight of pcb-support (with display)
+d_sup  = 2.5;              // diameter mounting-hole
 
-dt_sup = 4;                 // diameter thread pocket
-ht_sup  = 5.7;              // height of thread pocket
+dt_sup = 4;                // diameter thread pocket
+ht_sup  = 5.7;             // height of thread pocket
 
 xdelta = gap;
 ydelta = gap;
@@ -38,6 +39,8 @@ b     = 1.4;               // base thickness
 
 y1_lora = 46+ydelta;       // cutout LoRa (left side, from top)
 y2_lora = 57+ydelta;
+yw_lora = 7;               // inner length cutout
+d_lora  = 6;               // depth of cutout
 
 x1_uart = 13+xdelta;       // cutout UART (top side, from left)
 x2_uart = 25+xdelta;
@@ -55,7 +58,7 @@ x2_sd   = 73+xdelta;
 x_cutout = xdelta+w4-gap;
 y_cutout = ydelta+w4-gap;
 
-x_lora = -xsize/2 - w4 + x_cutout/2;
+x_lora = -xsize/2 - w4 + d_lora/2;
 y_lora = ysize/2 - y1_lora - (y2_lora-y1_lora)/2;
 
 x_uart = -xsize/2 + x1_uart + (x2_uart-x1_uart)/2;
