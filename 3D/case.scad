@@ -75,8 +75,8 @@ module case_bottom() {
   difference() {
     corpus_bottom();
     // cutout LoRa
-    move([x_lora-w4,y_lora,0]) cutout(width1=y2_lora-y1_lora,
-                                      width2=yw_lora,depth=d_lora,pos=LEFT);
+    move([x_lora-w4,y_lora,0]) cutout(width1=y2_lora-y1_lora-w4,
+                                      width2=yw_lora-w4,depth=d_lora,pos=LEFT);
     // cutout display
     move([x_display_off,y_display_off,-fuzz])
                  cuboid([x_display,y_display,b+2*fuzz],anchor=BOTTOM+CENTER);
@@ -85,5 +85,9 @@ module case_bottom() {
 
 // --- top-level object   ----------------------------------------------------
 
-// pcb_support(z_sup);
+//intersection() {
+//  case_bottom();
+//  move([-xsize/2-10,-5,0])
+//                 cuboid([xsize/2+5,40,b+z_pcb],anchor=BOTTOM+CENTER);
+//}
 case_bottom();
