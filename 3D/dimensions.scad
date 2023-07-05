@@ -40,7 +40,7 @@ b     = 1.4;               // base thickness
 y1_lora = 46+ydelta;       // cutout LoRa (left side, from top)
 y2_lora = 57+ydelta;
 yw_lora = 7;               // inner length cutout
-d_lora  = 6;               // depth of cutout
+d_lora  = 6 + w4;          // depth of cutout
 
 x1_uart = 13+xdelta;       // cutout UART (top side, from left)
 x2_uart = 25+xdelta;
