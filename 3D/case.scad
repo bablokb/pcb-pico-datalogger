@@ -11,6 +11,7 @@
 // ---------------------------------------------------------------------------
 
 include <dimensions.scad>
+include <shared_modules.scad>
 include <BOSL2/std.scad>
 
 x_display     = 42;
@@ -52,21 +53,6 @@ module corpus_bottom() {
   // cutout LoRa
   move([x_lora,y_lora,0]) cutout(width1=y2_lora-y1_lora,
                                  width2=yw_lora,depth=d_lora,pos=LEFT);
-}
-
-// --- cutout   --------------------------------------------------------------
-
-module cutout(width1,width2,depth,pos) {
-  z = b + z_sup + z_pcb;
-  if (pos == FRONT) {
-    xrot(-90) prismoid(size1=[width1,z], size2=[width2,z], h=depth,anchor=BACK);
-  } else if (pos == BACK) {
-    xrot(90) prismoid(size1=[width1,z], size2=[width2,z], h=depth,anchor=FRONT);
-  } else if (pos == LEFT) {
-    yrot(90) prismoid(size1=[z,width1], size2=[z,width2], h=depth,anchor=RIGHT);
-  } else if (pos == RIGHT) {
-    yrot(-90) prismoid(size1=[z,width1], size2=[z,width2], h=depth,anchor=LEFT);
-  }
 }
 
 // --- bottom of case   ------------------------------------------------------
