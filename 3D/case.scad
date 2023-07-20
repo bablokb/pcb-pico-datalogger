@@ -11,6 +11,7 @@
 // ---------------------------------------------------------------------------
 
 include <dimensions.scad>
+include <dimensions_bottom.scad>
 include <shared_modules.scad>
 include <BOSL2/std.scad>
 

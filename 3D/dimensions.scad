@@ -1,5 +1,5 @@
 // -----------------------------------------------------------------------------
-// 3D-Model (OpenSCAD) case (bottom) for datalogger.
+// 3D-Model (OpenSCAD) for datalogger: shared dimensions.
 //
 // Author: Bernhard Bablok
 // License: GPL3
@@ -22,37 +22,15 @@ z_pcb = 1.6;
 r_pcb = 3.0;               // corner radius
 b     = 1.4;               // base thickness
 
-xy_sup = 8;
-z_sup  = 8.8 - b;          // hight of pcb-support (with display)
-//z_sup  = 2;                // hight of pcb-support (with display)
-d_sup  = 2.5;              // diameter mounting-hole
-
-dt_sup = 4;                // diameter thread pocket
-ht_sup  = 5.7;             // height of thread pocket
-
 xdelta = gap;
 ydelta = gap;
 xsize = x_pcb+2*xdelta;    // inner size
 ysize = y_pcb+2*ydelta;
 
-zsize = 15;                // height above pcb 
-
 y1_lora = 46+ydelta;       // cutout LoRa (left side, from top)
 y2_lora = 57+ydelta;
 yw_lora = 7;               // inner length cutout
 d_lora  = 6 + w4;          // depth of cutout
-
-x1_uart = 13+xdelta;       // cutout UART (top side, from left)
-x2_uart = 25+xdelta;
-
-y1_adc  = 11+ydelta;       // cutout ADC (right side, from top)
-y2_adc  = 20.5+ydelta;
-
-y1_bat  = 50+ydelta;       // cutout BAT+reset (right side, from top)
-y2_bat  = 83+ydelta;
-
-x1_sd   = 40+xdelta;       // cutout sd-card+on (bottom side, from left)
-x2_sd   = 73+xdelta;
 
 // calculations for cutouts
 x_cutout = xdelta+w4-gap;
@@ -60,15 +38,3 @@ y_cutout = ydelta+w4-gap;
 
 x_lora = -xsize/2 - w4 + d_lora/2;
 y_lora = ysize/2 - y1_lora - (y2_lora-y1_lora)/2;
-
-x_uart = -xsize/2 + x1_uart + (x2_uart-x1_uart)/2;
-y_uart = ysize/2 + w4 - y_cutout/2;
-
-x_adc = +xsize/2 + w4 - x_cutout/2;
-y_adc = ysize/2 - y1_adc - (y2_adc-y1_adc)/2;
-
-x_bat = +xsize/2 + w4 - x_cutout/2;
-y_bat = ysize/2 - y1_bat - (y2_bat-y1_bat)/2;
-
-x_sd = -xsize/2 + x1_sd + (x2_sd-x1_sd)/2;
-y_sd = -ysize/2 - w4 + y_cutout/2;
