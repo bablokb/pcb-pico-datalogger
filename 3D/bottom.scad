@@ -33,7 +33,7 @@ module pcb_support() {
 // --- case (bottom-part)   --------------------------------------------------
 
 module corpus_bottom() {
-  z = b + z_sup + z_pcb;
+  h = b + z_sup + z_pcb;
   x_sup_off = x_pcb/2-r_pcb;
   y_sup_off = y_pcb/2-r_pcb;
   
@@ -42,7 +42,7 @@ module corpus_bottom() {
             rounding=r_pcb,edges="Z");
   
   // walls
-  rect_tube(isize=[xsize,ysize],wall=w4,h=z,anchor=BOTTOM+CENTER,
+  rect_tube(isize=[xsize,ysize],wall=w4,h=h,anchor=BOTTOM+CENTER,
             rounding=r_pcb,irounding=r_pcb);
   
   // supports
@@ -53,7 +53,7 @@ module corpus_bottom() {
 
   // cutout LoRa
   move([x_lora,y_lora,0]) cutout(width1=y2_lora-y1_lora,
-                                 width2=yw_lora,depth=d_lora,pos=LEFT);
+                                 width2=yw_lora,depth=d_lora,h=h,pos=LEFT);
 }
 
 // --- bottom of case   ------------------------------------------------------
@@ -62,8 +62,9 @@ module case_bottom() {
   difference() {
     corpus_bottom();
     // cutout LoRa
+    h = b + z_sup + z_pcb;
     move([x_lora-w4,y_lora,0]) cutout(width1=y2_lora-y1_lora-w4,
-                                      width2=yw_lora-w4,depth=d_lora,pos=LEFT);
+                                width2=yw_lora-w4,depth=d_lora,h=h,pos=LEFT);
     // cutout display
     move([x_display_off,y_display_off,-fuzz])
                  cuboid([x_display,y_display,b+2*fuzz],anchor=BOTTOM+CENTER);
