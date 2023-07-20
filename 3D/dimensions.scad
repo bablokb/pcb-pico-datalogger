@@ -20,9 +20,10 @@ x_pcb = 80;                // pcb-dimensions
 y_pcb = 90;
 z_pcb = 1.6;
 r_pcb = 3.0;               // corner radius
+b     = 1.4;               // base thickness
 
 xy_sup = 8;
-z_sup  = 13;               // hight of pcb-support (with display)
+z_sup  = 8.8 - b;          // hight of pcb-support (with display)
 //z_sup  = 2;                // hight of pcb-support (with display)
 d_sup  = 2.5;              // diameter mounting-hole
 
@@ -35,7 +36,6 @@ xsize = x_pcb+2*xdelta;    // inner size
 ysize = y_pcb+2*ydelta;
 
 zsize = 15;                // height above pcb 
-b     = 1.4;               // base thickness
 
 y1_lora = 46+ydelta;       // cutout LoRa (left side, from top)
 y2_lora = 57+ydelta;
