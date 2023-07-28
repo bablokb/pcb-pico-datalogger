@@ -9,6 +9,9 @@
 
 zsize = 10;                // height above pcb 
 
+d_screw   = 2.5 + gap/2;     // diameter screw
+d_screw_h = 4.0 + gap/2;     // diameter screw-head
+
 x1_uart = 13+xdelta;       // cutout UART (top side, from left)
 x2_uart = 25+xdelta;
 x_uart  = xsize/2 - x1_uart - (x2_uart-x1_uart)/2;     // offset

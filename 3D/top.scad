@@ -12,7 +12,9 @@ include <dimensions_top.scad>
 include <shared_modules.scad>
 include <BOSL2/std.scad>
 
-h_top = b + zsize;
+h_top = 2*b + zsize;
+x_off = x_pcb/2-r_pcb;
+y_off = y_pcb/2-r_pcb;
 
 // --- case (top-part)   -----------------------------------------------------
 
@@ -24,6 +26,12 @@ module corpus_top() {
   cuboid([xsize+2*w4,ysize+2*w4,b],anchor=BOTTOM+CENTER,
             rounding=r_pcb,edges="Z");
   
+  // screws
+  move([-x_off,+y_off,b-fuzz]) cyl(h=b,d=1.2*d_screw_h,anchor=BOTTOM+CENTER);
+  move([-x_off,-y_off,b-fuzz]) cyl(h=b,d=1.2*d_screw_h,anchor=BOTTOM+CENTER);
+  move([+x_off,+y_off,b-fuzz]) cyl(h=b,d=1.2*d_screw_h,anchor=BOTTOM+CENTER);
+  move([+x_off,-y_off,b-fuzz]) cyl(h=b,d=1.2*d_screw_h,anchor=BOTTOM+CENTER);
+
   // walls
   rect_tube(isize=[xsize,ysize],wall=w4,h=h_top,anchor=BOTTOM+CENTER,
             rounding=r_pcb,irounding=r_pcb);
@@ -41,10 +49,21 @@ module corpus_top() {
 module case_top() {
   difference() {
     corpus_top();
-    // cutout screw-holes TODO
+
+    // cutout screw-holes
+    move([-x_off,+y_off,-fuzz]) cyl(h=b,d=d_screw_h,anchor=BOTTOM+CENTER);
+    move([-x_off,-y_off,-fuzz]) cyl(h=b,d=d_screw_h,anchor=BOTTOM+CENTER);
+    move([+x_off,+y_off,-fuzz]) cyl(h=b,d=d_screw_h,anchor=BOTTOM+CENTER);
+    move([+x_off,-y_off,-fuzz]) cyl(h=b,d=d_screw_h,anchor=BOTTOM+CENTER);
+
+    move([-x_off,+y_off,-fuzz]) cyl(h=2*b+2*fuzz,d=d_screw,anchor=BOTTOM+CENTER);
+    move([-x_off,-y_off,-fuzz]) cyl(h=2*b+2*fuzz,d=d_screw,anchor=BOTTOM+CENTER);
+    move([+x_off,+y_off,-fuzz]) cyl(h=2*b+2*fuzz,d=d_screw,anchor=BOTTOM+CENTER);
+    move([+x_off,-y_off,-fuzz]) cyl(h=2*b+2*fuzz,d=d_screw,anchor=BOTTOM+CENTER);
+
     // cutout LoRa
-    move([-x_lora+w4,y_lora,0]) cutout(width1=y2_lora-y1_lora-w4,
-                             width2=yw_lora-w4,depth=d_lora,h=h_top,pos=RIGHT);
+    move([-x_lora,y_lora,0]) cutout(width1=y2_lora-y1_lora,
+                             width2=yw_lora,depth=d_lora,h=h_top,pos=RIGHT);
     // cutout i2c+pico
     move([x_i2c,y_i2c+w2,0]) cutout(width1=x2_i2c-x1_i2c-w4,
                             width2=x2_i2c-x1_i2c-w4,depth=d_i2c,h=h_top,pos=BACK);
@@ -61,8 +80,8 @@ module case_top() {
     move([-xsize/2,y_bat,h_top-z_bat])
        cuboid([4*w4,(y2_bat-y1_bat),z_bat+fuzz],anchor=BOTTOM+CENTER);
     // cutout ADC (add if needed)
-    //move([-xsize/2,y_adc,b])
-       // cuboid([4*w4,(y2_adc-y1_adc),h_top],anchor=BOTTOM+CENTER);
+    move([-xsize/2,y_adc,b])
+        cuboid([4*w4,(y2_adc-y1_adc),h_top],anchor=BOTTOM+CENTER);
   }
 }
 
