@@ -164,7 +164,7 @@ class Display:
     self._max_chars = 10*self._display.width/m.width      # round later
     self._panel = label.Label(font=font,color=shader[1],
                               tab_replacement=(2," "),
-                              line_spacing=1,
+                              line_spacing=0.8,
                               text=60*'M',anchor_point=(0.5,0.5))
     self._panel.anchored_position = (self._display.width/2,
                                      self._display.height/2)
