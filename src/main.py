@@ -129,6 +129,10 @@ class DataCollector():
 
     self.save_status = "__"
 
+    if g_config.HAVE_LORA:
+      import lora
+      self.lora = lora.LORA()
+
     #configure sensors
     self._configure_sensors(i2c0,i2c1)
 
@@ -262,8 +266,11 @@ class DataCollector():
   # --- send data   ----------------------------------------------------------
 
   def send_data(self):
+    # g_logger.print(f"not yet implemented!")
     """ send data using LORA """
-    g_logger.print(f"not yet implemented!")
+    header = self.csv_header
+    payload = self.record
+    self.lora.transmit(header,payload)
 
   # --- update display   -----------------------------------------------------
 
