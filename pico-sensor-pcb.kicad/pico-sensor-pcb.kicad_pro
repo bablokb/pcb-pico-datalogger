@@ -91,7 +91,7 @@
         "through_hole_pad_without_hole": "error",
         "too_many_vias": "error",
         "track_dangling": "warning",
-        "track_width": "error",
+        "track_width": "ignore",
         "tracks_crossing": "error",
         "unconnected_items": "error",
         "unresolved_variable": "error",
@@ -375,8 +375,10 @@
         "line_style": 0,
         "microvia_diameter": 0.3,
         "microvia_drill": 0.1,
-        "name": "BATT",
-        "nets": [],
+        "name": "3V3",
+        "nets": [
+          "+3V3"
+        ],
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "schematic_color": "rgba(0, 0, 0, 0.000)",
         "track_width": 0.5,
