@@ -7,6 +7,8 @@
 // https://github.com/bablokb/pcb-pico-datalogger
 // -----------------------------------------------------------------------------
 
+include <dimensions.scad>
+
 zsize = 10;                // height above pcb 
 
 d_screw   = 2.5 + gap/2;     // diameter screw
