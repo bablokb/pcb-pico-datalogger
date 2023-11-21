@@ -9,7 +9,7 @@
 
 include <dimensions.scad>
 
-zsize = 10;                // height above pcb 
+zsize = 10;                // height above pcb: height of brass-standoffs
 
 d_screw   = 2.5 + gap/2;     // diameter screw
 d_screw_h = 4.0 + gap/2;     // diameter screw-head
