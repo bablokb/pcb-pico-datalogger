@@ -13,7 +13,8 @@ include <shared_modules.scad>
 include <sensors.scad>
 include <BOSL2/std.scad>
 
-h_top = 2*b + zsize;
+h_screw = b;
+h_top = b + h_screw + zsize;     // base-plate + screws + height of standoffs
 x_off = x_pcb/2-r_pcb;
 y_off = y_pcb/2-r_pcb;
 
@@ -28,10 +29,10 @@ module corpus_top() {
             rounding=r_pcb,edges="Z");
   
   // screws
-  move([-x_off,+y_off,b-fuzz]) cyl(h=b,d=1.2*d_screw_h,anchor=BOTTOM+CENTER);
-  move([-x_off,-y_off,b-fuzz]) cyl(h=b,d=1.2*d_screw_h,anchor=BOTTOM+CENTER);
-  move([+x_off,+y_off,b-fuzz]) cyl(h=b,d=1.2*d_screw_h,anchor=BOTTOM+CENTER);
-  move([+x_off,-y_off,b-fuzz]) cyl(h=b,d=1.2*d_screw_h,anchor=BOTTOM+CENTER);
+  move([-x_off,+y_off,b-fuzz]) cyl(h=h_screw,d=1.2*d_screw_h,anchor=BOTTOM+CENTER);
+  move([-x_off,-y_off,b-fuzz]) cyl(h=h_screw,d=1.2*d_screw_h,anchor=BOTTOM+CENTER);
+  move([+x_off,+y_off,b-fuzz]) cyl(h=h_screw,d=1.2*d_screw_h,anchor=BOTTOM+CENTER);
+  move([+x_off,-y_off,b-fuzz]) cyl(h=h_screw,d=1.2*d_screw_h,anchor=BOTTOM+CENTER);
 
   // walls
   rect_tube(isize=[xsize,ysize],wall=w4,h=h_top,anchor=BOTTOM+CENTER,
