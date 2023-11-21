@@ -10,6 +10,7 @@
 include <dimensions.scad>
 include <dimensions_top.scad>
 include <shared_modules.scad>
+include <sensors.scad>
 include <BOSL2/std.scad>
 
 h_top = 2*b + zsize;
@@ -82,7 +83,10 @@ module case_top() {
     // cutout ADC (add if needed)
     move([-xsize/2,y_adc,b])
         cuboid([4*w4,(y2_adc-y1_adc),h_top],anchor=BOTTOM+CENTER);
+    // cutout sensor
+    qtpy_base(b);
   }
+  qtpy_sensor(b,0,0);
 }
 
 // --- top-level object   ----------------------------------------------------
