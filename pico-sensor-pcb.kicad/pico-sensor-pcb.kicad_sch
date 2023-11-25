@@ -6,8 +6,8 @@
 
   (title_block
     (title "pico-sensor-pcb")
-    (date "2023-10-14")
-    (rev "0.80")
+    (date "2023-11-25")
+    (rev "0.90")
     (company "Bernhard Bablok")
     (comment 1 "https://github.com/bablokb/pcb-pico-datalogger")
     (comment 2 "https://opendeved.net/ilce")
