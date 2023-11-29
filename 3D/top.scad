@@ -13,7 +13,7 @@
 include <dimensions.scad>
 include <dimensions_top.scad>
 include <shared_modules.scad>
-include <sensors.scad>
+include <qtpy_sensors.scad>
 include <btn_pcb.scad>
 include <BOSL2/std.scad>
 
@@ -96,7 +96,7 @@ module case_top() {
     translate([x_btn_off,y_btn_off,0]) btn_base(b);
   }
   // sensor-holder and buttons-holder
-  qtpy_sensor(b,0,0);
+  qtpy_sensor(b);
   translate([x_btn_off,y_btn_off,0]) btn_pcb_holder(b);
 }
 

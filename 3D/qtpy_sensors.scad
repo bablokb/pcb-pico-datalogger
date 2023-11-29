@@ -26,7 +26,7 @@ y_qtpy      = 17.98 + gap;
 
 // --- sensor   ----------------------------------------------------------------
 
-module qtpy_breakout(z,x_off,y_off) {
+module qtpy_breakout(z) {
   z_sensor = z_pcb + z_stemma;
   translate([0,0,z-fuzz]) {
     difference() {
@@ -40,7 +40,7 @@ module qtpy_breakout(z,x_off,y_off) {
           cuboid([w2+2*fuzz,y_stemma,z_sensor+fuzz],anchor=BOTTOM+CENTER);
     }
     // wall around sensor
-    translate([x_off,y_off,0])
+    translate([0,y_sensor_off,0])
          rect_tube(size=[x_sensor+2*w2,y_sensor+2*w2],wall=w2,h=z_stemma+2*fuzz,
                    anchor=BOTTOM+CENTER);
   }
@@ -54,7 +54,7 @@ module qtpy_base(z) {
 
 // --- sensor in qtpy-formfactor   ---------------------------------------------
 
-module qtpy_sensor(z,x_off,y_off) {
+module qtpy_sensor(z) {
   difference() {
     // base plate
     qtpy_base(z);
@@ -62,5 +62,5 @@ module qtpy_sensor(z,x_off,y_off) {
     translate([0,y_sensor_off,-fuzz]) 
       cuboid([x_sensor,y_sensor,z+2*fuzz], anchor=BOTTOM+CENTER);
   }
-  qtpy_breakout(z,x_off,y_off);
+  qtpy_breakout(z);
 }
