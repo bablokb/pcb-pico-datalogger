@@ -17,10 +17,12 @@ d_screw_h = 4.0 + gap/2;     // diameter screw-head
 x1_uart = 13+xdelta;       // cutout UART (top side, from left)
 x2_uart = 25+xdelta;
 x_uart  = xsize/2 - x1_uart - (x2_uart-x1_uart)/2;     // offset
+z_uart  = 5;
 
 y1_adc  = 11+ydelta;       // cutout ADC (right side, from top)
 y2_adc  = 20.5+ydelta;
 y_adc   = ysize/2 - y1_adc - (y2_adc-y1_adc)/2;        // offset
+z_adc   = 5;
 
 y1_bat  = 50.5+ydelta;       // cutout BAT (right side, from top)
 y2_bat  = 60+ydelta;
