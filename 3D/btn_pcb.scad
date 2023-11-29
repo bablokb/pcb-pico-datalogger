@@ -21,12 +21,12 @@ y_btn_pcb = 10 + 2*btn_gap;
 h_btn_pcb = 1.6;
 a_btn_pcb = 1.6;
 
-// cutout pins (back of connectors)
-x_co_pins       = 5.1 + 2*btn_gap;
-y_co_pins       = x_co_pins;
+// cutout pins (back of connectors): 2x2/3x1 pins
+y_co_pins       = 5.1 + 2*btn_gap;
+x_co_pins       = 7.6 + 3*btn_gap;
+x_co_pins_off   = 0;                          // relative to pcb
+y_co_pins_off   = -y_btn_pcb/2+y_co_pins/2;   // relative to pcb
 h_co_pins       = 0.4;
-x_co_pins_off   = 1.38;    // relative to pcb
-y_co_pins_off   = -1.81;   // relative to pcb
 
 // cutout buttons
 x_co_btn        = 6.3;
