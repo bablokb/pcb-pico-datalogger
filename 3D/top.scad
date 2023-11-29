@@ -25,6 +25,9 @@ y_off = y_pcb/2-r_pcb;
 x_btn_off = 0;                   // offset button-pcb
 y_btn_off = -y_pcb/2+20;
 
+x_qtpy_off = xsize/2 - x_qtpy/2 - 5;
+y_qtpy_off = ysize/2 - y_qtpy/2 - 15;
+
 // --- case (top-part)   -----------------------------------------------------
 
 module corpus_top() {
@@ -45,9 +48,6 @@ module corpus_top() {
   rect_tube(isize=[xsize,ysize],wall=w4,h=h_top,anchor=BOTTOM+CENTER,
             rounding=r_pcb,irounding=r_pcb);
   
-  // cutout LoRa
-  move([-x_lora,y_lora,0]) cutout(width1=y2_lora-y1_lora,
-                                 width2=yw_lora,depth=d_lora,h=h_top,pos=RIGHT);
   // cutout i2c+pico
   move([x_i2c,y_i2c,0]) cutout(width1=x2_i2c-x1_i2c,
                                  width2=x2_i2c-x1_i2c,depth=d_i2c,h=h_top,pos=BACK);
@@ -71,8 +71,8 @@ module case_top() {
     move([+x_off,-y_off,-fuzz]) cyl(h=2*b+2*fuzz,d=d_screw,anchor=BOTTOM+CENTER);
 
     // cutout LoRa
-    move([-x_lora,y_lora,0]) cutout(width1=y2_lora-y1_lora,
-                             width2=yw_lora,depth=d_lora,h=h_top,pos=RIGHT);
+    move([xsize/2,y_lora,h_top-z_lora])
+                      cuboid([4*w4,y2_lora-y1_lora-w4,h_top],anchor=BOTTOM+CENTER);
     // cutout i2c+pico
     move([x_i2c,y_i2c+w2,0]) cutout(width1=x2_i2c-x1_i2c-w4,
                             width2=x2_i2c-x1_i2c-w4,depth=d_i2c,h=h_top,pos=BACK);
@@ -80,7 +80,7 @@ module case_top() {
                             width2=x2_i2c-x1_i2c-w4,depth=d_i2c,h=h_top,pos=BACK);
 
     // cutout UART/I2C0
-    move([x_uart,ysize/2,b]) 
+    move([x_uart,ysize/2,h_top-z_uart])
        cuboid([(x2_uart-x1_uart),4*w4,h_top],anchor=BOTTOM+CENTER);
     // cutout SD
     move([x_sd,-ysize/2,h_top-z_sd])
@@ -89,14 +89,14 @@ module case_top() {
     move([-xsize/2,y_bat,h_top-z_bat])
        cuboid([4*w4,(y2_bat-y1_bat),z_bat+fuzz],anchor=BOTTOM+CENTER);
     // cutout ADC (add if needed)
-    move([-xsize/2,y_adc,b])
+    move([-xsize/2,y_adc,h_top-z_adc])
         cuboid([4*w4,(y2_adc-y1_adc),h_top],anchor=BOTTOM+CENTER);
     // cutout sensor and buttons
-    qtpy_base(b);
+    translate([x_qtpy_off,y_qtpy_off,0]) qtpy_base(b);
     translate([x_btn_off,y_btn_off,0]) btn_base(b);
   }
   // sensor-holder and buttons-holder
-  qtpy_sensor(b);
+  translate([x_qtpy_off,y_qtpy_off,0]) qtpy_sensor(b);
   translate([x_btn_off,y_btn_off,0]) btn_pcb_holder(b);
 }
 
