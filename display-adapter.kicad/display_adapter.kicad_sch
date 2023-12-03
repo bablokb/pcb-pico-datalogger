@@ -7,7 +7,7 @@
   (title_block
     (title "Display-Adapter")
     (date "2023-12-03")
-    (rev "0.1")
+    (rev "0.90")
     (company "Bernhard Bablok")
     (comment 1 "https://github.com/bablokb/pcb-pico-datalogger")
     (comment 2 "https://opendeved.net/ilce")
