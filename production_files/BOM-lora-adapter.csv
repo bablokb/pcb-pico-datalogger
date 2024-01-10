@@ -1,2 +1,4 @@
 Comment,Designator,Footprint,LCSC
+Conn_01x05,J2,PinSocket_1x05_P2.54mm_Vertical,C2897368
+RFM9x_Lora_Breakout,U1,PinSocket_1x09_P2.54mm_Vertical,C2897372
 Conn_LoRa,J1,JST_SUR_BM08B-SURS-TF_1x08-1MP_P0.80mm_Vertical,C5143489

@@ -1,2 +1,4 @@
 Designator,Val,Package,Mid X,Mid Y,Rotation,Layer
 J1,Conn_LoRa,JST_SUR_BM08B-SURS-TF_1x08-1MP_P0.80mm_Vertical,139.0,-88.115,270.0,bottom
+J2,Conn_01x05,PinSocket_1x05_P2.54mm_Vertical,170.47,-83.005,90.0,top
+U1,RFM9x_Lora_Breakout,PinSocket_1x09_P2.54mm_Vertical,145.07,-88.105,90.0,top
