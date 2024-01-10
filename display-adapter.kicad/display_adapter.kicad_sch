@@ -6,8 +6,8 @@
 
   (title_block
     (title "Display-Adapter")
-    (date "2023-12-07")
-    (rev "1.00")
+    (date "2024-01-10")
+    (rev "1.10")
     (company "Bernhard Bablok")
     (comment 1 "https://github.com/bablokb/pcb-pico-datalogger")
     (comment 2 "https://opendeved.net/ilce")
@@ -1546,7 +1546,7 @@
   )
 
   (symbol (lib_id "Connector_Generic:Conn_01x20") (at 114.808 61.468 0) (unit 1)
-    (in_bom no) (on_board yes)
+    (in_bom yes) (on_board yes)
     (uuid a095ca8b-9f0e-4330-8915-8332f31c40bb)
     (property "Reference" "J2" (id 0) (at 112.268 25.908 0)
       (effects (font (size 1.27 1.27)) (justify left))
@@ -1558,6 +1558,9 @@
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (id 3) (at 114.808 61.468 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "LCSC" "C725952" (id 4) (at 114.808 61.468 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (pin "1" (uuid fd9d86c1-8159-4fc9-91ff-1c6f6d3520dc))
@@ -1601,7 +1604,7 @@
   )
 
   (symbol (lib_id "Connector_Generic:Conn_01x20") (at 140.208 64.262 180) (unit 1)
-    (in_bom no) (on_board yes)
+    (in_bom yes) (on_board yes)
     (uuid aa10ce2b-68dd-4cee-9ad2-555d575241c4)
     (property "Reference" "J3" (id 0) (at 144.018 25.908 0)
       (effects (font (size 1.27 1.27)) (justify left))
@@ -1613,6 +1616,9 @@
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (id 3) (at 140.208 64.262 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "LCSC" "C725952" (id 4) (at 140.208 64.262 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (pin "1" (uuid 16dc8e8d-9a15-4f18-861a-1cb856c3b6ff))
