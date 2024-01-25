@@ -6,7 +6,7 @@
 
   (title_block
     (title "pico-datalogger-v2")
-    (date "2024-01-24")
+    (date "2024-01-25")
     (rev "1.95")
     (company "Bernhard Bablok")
     (comment 1 "https://github.com/bablokb/pcb-pico-datalogger")
