@@ -229,7 +229,7 @@
     (property "Sheetname" "")
     (property "exclude_from_bom" "")
     (path "/bb346571-71da-492d-a280-f270dca8627d")
-    (attr through_hole exclude_from_bom)
+    (attr through_hole exclude_from_pos_files exclude_from_bom)
     (fp_text reference "J4" (at 0 -2.33 90) (layer "F.SilkS") hide
       (effects (font (size 1 1) (thickness 0.15)))
       (tstamp 221c2034-d78a-438a-9926-db151027bd17)
@@ -324,7 +324,7 @@
     (property "Sheetname" "")
     (property "exclude_from_bom" "")
     (path "/8dab1707-d5a5-448b-853e-42b2ce28ace6")
-    (attr through_hole exclude_from_bom)
+    (attr through_hole exclude_from_pos_files exclude_from_bom)
     (fp_text reference "J16" (at 0 -2.33) (layer "F.SilkS") hide
       (effects (font (size 1 1) (thickness 0.15)))
       (tstamp dd787081-17a5-4c0b-8f23-c004bbbdb701)
@@ -736,7 +736,7 @@
     (property "Sheetname" "")
     (property "exclude_from_bom" "")
     (path "/e5952ec6-15fa-4318-9037-3cb16dec7f2a")
-    (attr through_hole exclude_from_bom)
+    (attr through_hole exclude_from_pos_files exclude_from_bom)
     (fp_text reference "J15" (at 0 -2.33) (layer "F.SilkS") hide
       (effects (font (size 1 1) (thickness 0.15)))
       (tstamp a7b85682-0d54-4fa7-8680-ff33ca4ca5fa)
@@ -1017,8 +1017,8 @@
       (net 31 "/RUN") (pinfunction "Pin_7") (pintype "passive") (tstamp 40c9906e-7949-4786-bffa-141b184a18ab))
     (pad "8" smd roundrect (at 2.8 0.85) (size 0.5 1.1) (layers "F.Cu" "F.Paste" "F.Mask") (roundrect_rratio 0.25)
       (net 39 "/~{ON}") (pinfunction "Pin_8") (pintype "passive") (tstamp 4cecd2bb-692e-431b-99d5-de70ff1efe62))
-    (pad "MP" smd roundrect (at -4.1 -0.55) (size 1.2 1.7) (layers "F.Cu" "F.Paste" "F.Mask") (roundrect_rratio 0.208333) (tstamp b96509ee-76c5-4885-894b-527deb70770e))
-    (pad "MP" smd roundrect (at 4.1 -0.55) (size 1.2 1.7) (layers "F.Cu" "F.Paste" "F.Mask") (roundrect_rratio 0.208333) (tstamp f460eaf6-087b-445f-b427-e5bd8ec2361c))
+    (pad "MP" smd roundrect (at -4.1 -0.55) (size 1.2 1.7) (layers "F.Cu" "F.Paste" "F.Mask") (roundrect_rratio 0.2083333333) (tstamp b96509ee-76c5-4885-894b-527deb70770e))
+    (pad "MP" smd roundrect (at 4.1 -0.55) (size 1.2 1.7) (layers "F.Cu" "F.Paste" "F.Mask") (roundrect_rratio 0.2083333333) (tstamp f460eaf6-087b-445f-b427-e5bd8ec2361c))
     (model "${KICAD6_3DMODEL_DIR}/Connector_JST.3dshapes/JST_SUR_BM08B-SURS-TF_1x08-1MP_P0.80mm_Vertical.wrl"
       (offset (xyz 0 0 0))
       (scale (xyz 1 1 1))
@@ -1105,7 +1105,7 @@
     (property "Sheetname" "")
     (property "exclude_from_bom" "")
     (path "/5837138a-f598-46b0-93e8-032288019b84")
-    (attr through_hole exclude_from_bom)
+    (attr through_hole exclude_from_pos_files exclude_from_bom)
     (fp_text reference "J17" (at 0 -2.33) (layer "F.SilkS") hide
       (effects (font (size 1 1) (thickness 0.15)))
       (tstamp 339363ce-a12e-466b-bf73-0707493b5813)
@@ -1683,8 +1683,9 @@
     (tags "tact sw push 6mm")
     (property "Sheetfile" "pico-datalogger-v2.kicad_sch")
     (property "Sheetname" "")
+    (property "exclude_from_bom" "")
     (path "/474c1907-0f6d-4bf0-aa0d-f244cf75c61e")
-    (attr through_hole exclude_from_pos_files)
+    (attr through_hole exclude_from_pos_files exclude_from_bom)
     (fp_text reference "SW1" (at -1.4 -3.6 90) (layer "F.SilkS") hide
       (effects (font (size 1 1) (thickness 0.15)))
       (tstamp a1015494-9d04-4fa6-a115-713a5a46b28a)
@@ -1912,8 +1913,9 @@
     (tags "tact sw push 6mm")
     (property "Sheetfile" "pico-datalogger-v2.kicad_sch")
     (property "Sheetname" "")
+    (property "exclude_from_bom" "")
     (path "/0363028b-9115-47fb-b3fa-b58dba2246e7")
-    (attr through_hole exclude_from_pos_files)
+    (attr through_hole exclude_from_pos_files exclude_from_bom)
     (fp_text reference "SW2" (at -1.25 -2.5 90) (layer "F.SilkS") hide
       (effects (font (size 1 1) (thickness 0.15)))
       (tstamp e458506f-3554-4ed8-85c5-99e342ad3098)
@@ -2992,7 +2994,7 @@
   (gr_text "3V3" (at 134.028572 147.4) (layer "B.SilkS") (tstamp 2642240f-cf39-463e-ab75-8fc42820c4f3)
     (effects (font (size 0.9 0.9) (thickness 0.15)) (justify mirror))
   )
-  (gr_text "https://github.com/bablokb/pcb-pico-datalogger\nhttps://opendeved.net/ilce               Rev 1.95" (at 93.35 123.75 90) (layer "B.SilkS") (tstamp 2a44105a-de96-4400-88ab-1e4f909ffe1a)
+  (gr_text "https://github.com/bablokb/pcb-pico-datalogger\nhttps://opendeved.net/ilce               Rev 2.00" (at 93.35 123.75 90) (layer "B.SilkS") (tstamp 2a44105a-de96-4400-88ab-1e4f909ffe1a)
     (effects (font (size 1 1) (thickness 0.15)) (justify left mirror))
   )
   (gr_text "RX" (at 96.628571 115.95) (layer "B.SilkS") (tstamp 2b195780-0e9b-425a-ad4f-d9e6470432dd)

@@ -6,8 +6,8 @@
 
   (title_block
     (title "pico-datalogger-v2")
-    (date "2024-01-25")
-    (rev "1.95")
+    (date "2024-01-26")
+    (rev "2.00")
     (company "Bernhard Bablok")
     (comment 1 "https://github.com/bablokb/pcb-pico-datalogger")
     (comment 2 "https://opendeved.net/ilce")
@@ -4127,7 +4127,7 @@
   )
 
   (symbol (lib_id "user:SW_Push_Vertical") (at 100.076 186.436 0) (unit 1)
-    (in_bom yes) (on_board yes)
+    (in_bom no) (on_board yes)
     (uuid 0363028b-9115-47fb-b3fa-b58dba2246e7)
     (property "Reference" "SW2" (id 0) (at 100.33 178.816 0))
     (property "Value" "SW_RST" (id 1) (at 100.076 181.61 0))
@@ -4469,7 +4469,7 @@
   )
 
   (symbol (lib_name "SW_Push_Vertical_1") (lib_id "user:SW_Push_Vertical") (at 220.726 68.58 0) (unit 1)
-    (in_bom yes) (on_board yes)
+    (in_bom no) (on_board yes)
     (uuid 474c1907-0f6d-4bf0-aa0d-f244cf75c61e)
     (property "Reference" "SW1" (id 0) (at 220.98 60.96 0))
     (property "Value" "SW_ON" (id 1) (at 220.726 63.754 0))
