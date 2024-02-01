@@ -7,7 +7,7 @@ J1,JST-PH2 Bat,JST_PH_S2B-PH-SM4-TB_1x02-1MP_P2.00mm_Horizontal,141.1,-110.85,90
 J2,Conn_Pico_Left,PinSocket_1x20_P2.54mm_Vertical,108.175,-125.9,90.0,top
 J3,Conn_Pico_Right,PinSocket_1x20_P2.54mm_Vertical,125.955,-125.9,90.0,top
 J5,Conn_LoRa,JST_SUR_BM08B-SURS-TF_1x08-1MP_P0.80mm_Vertical,92.3,-156.25,90.0,top
-J6,Conn_Display,JST_SUR_BM08B-SURS-TF_1x08-1MP_P0.80mm_Vertical,142.95,-156.25,90.0,top
+J6,Conn_Display,JST_SUR_BM08B-SURS-TF_1x08-1MP_P0.80mm_Vertical,142.8,-156.25,270.0,top
 J7,Conn_PCB_1,JST_SUR_BM08B-SURS-TF_1x08-1MP_P0.80mm_Vertical,112.05,-167.75,0.0,top
 J10,Conn_PCB_2,JST_SUR_BM08B-SURS-TF_1x08-1MP_P0.80mm_Vertical,92.3,-131.53,90.0,top
 Q1,AO3401A,SOT-23,130.0,-111.15,180.0,top
