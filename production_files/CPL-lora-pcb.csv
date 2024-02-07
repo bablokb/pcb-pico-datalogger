@@ -1,0 +1,5 @@
+Designator,Val,Package,Mid X,Mid Y,Rotation,Layer
+AE1,Antenna_u.FL,U.FL_Hirose_U.FL-R-SMT-1_Vertical,133.596,-123.6,270.0,top
+C1,10µF,C_0603_1608Metric,129.35,-116.35,90.0,top
+J1,Conn_SUR,JST_SUR_BM08B-SURS-TF_1x08-1MP_P0.80mm_Vertical,102.205724,-116.8,270.0,top
+U1,RFM95W-868S2,HOPERF_RFM9XW_SMD,118.85,-116.6,0.0,top
