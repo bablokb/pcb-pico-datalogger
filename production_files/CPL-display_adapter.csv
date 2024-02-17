@@ -1,0 +1,4 @@
+Designator,Val,Package,Mid X,Mid Y,Rotation,Layer
+J1,Conn_Display,JST_SUR_BM08B-SURS-TF_1x08-1MP_P0.80mm_Vertical,108.2,-125.7,90.0,bottom
+J2,Inky_Left_1_20,PinHeader_1x20_P2.54mm_Vertical,116.4,-124.125,90.0,top
+J3,Inky_Right_21_40,PinHeader_1x20_P2.54mm_Vertical,98.62,-124.135,270.0,top
