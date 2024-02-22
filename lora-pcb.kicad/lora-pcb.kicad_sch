@@ -6,8 +6,8 @@
 
   (title_block
     (title "LoRa PCB with SURS-Connector")
-    (date "2024-02-07")
-    (rev "0.9")
+    (date "2024-02-22")
+    (rev "1.0")
     (company "Bernhard Bablok")
     (comment 1 "https://github.com/bablokb/pcb-pico-datalogger")
     (comment 2 "https://opendeved.net/ilce")
@@ -1593,7 +1593,7 @@
     (property "Datasheet" "https://www.hoperf.com/data/upload/portal/20181127/5bfcbea20e9ef.pdf" (id 3) (at 79.248 4.826 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "LCSC" "C2844472" (id 4) (at 163.068 46.736 0)
+    (property "LCSC" "C2844474" (id 4) (at 163.068 46.736 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (pin "1" (uuid b04d39ae-9e16-45f3-94f2-b1dc5af0c5af))
