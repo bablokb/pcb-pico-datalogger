@@ -1,18 +1,16 @@
 #-----------------------------------------------------------------------------
-# Basic data-collection program.
+# LoRa gateway with Blues cellular.
 #
-# The code is encapsulated in the class Datacollector, mainly to allow
-# the use of precompiled code.
 #
 # Author: Bernhard Bablok
 #
 # Website: https://github.com/pcb-pico-datalogger
 #-----------------------------------------------------------------------------
 
-import datacollector
+import gateway
 
 try:
-  app = datacollector.DataCollector()
+  app = gateway.Gateway()
   app.run()
 except Exception as ex:
   import traceback
