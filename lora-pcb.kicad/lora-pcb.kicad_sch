@@ -6,8 +6,8 @@
 
   (title_block
     (title "LoRa PCB with SURS-Connector")
-    (date "2024-02-22")
-    (rev "1.0")
+    (date "2024-03-29")
+    (rev "1.10")
     (company "Bernhard Bablok")
     (comment 1 "https://github.com/bablokb/pcb-pico-datalogger")
     (comment 2 "https://opendeved.net/ilce")
