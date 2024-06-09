@@ -18,7 +18,7 @@ include <BOSL2/std.scad>
 x_display     = 42;
 y_display     = 88;
 x_display_off = -x_pcb/2 + x_display/2 + 24;
-y_display_off = (y_pcb - y_display)/2;
+y_display_off = (y_pcb - y_display)/2 - 1.5;
 
 // --- support + thread-pocket   ---------------------------------------------
 
