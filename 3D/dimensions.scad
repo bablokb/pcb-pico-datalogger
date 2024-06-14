@@ -9,7 +9,7 @@
 
 $fa = 1;
 $fs = 0.4;
-$fn = 48;
+$fn= $preview ? 32 : 48;
 
 fuzz = 0.01;
 w2 = 0.86;                 // 2 walls Prusa3D
