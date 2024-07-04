@@ -38,8 +38,17 @@ ens160_offy = -y_holder/2+46;
 x_cutout = 6.5;
 y_cutout = 13;
 y_off    = y_cutout + 4;
+d_screw  = 3.0 + 2*gap;
 
-d_screw   = 3.0 + 2*gap;
+// dimensions connector-hub
+x_hub = 30 + gap/2;
+y_hub = 18.3 + gap/2;
+b_hub = 2.2;
+z_hub = (TEST ? 3 : 9.2) + b_hub;
+
+x_hub_cutout_off = 4.4;
+x_hub_cutout     = 4.5;
+y_hub_cutout     = y_hub - 2*2.54;
 
 // --- cable-cutout   --------------------------------------------------------
 
@@ -90,11 +99,32 @@ module sensor_holder() {
   }
 }
 
+// --- connector-hub   -------------------------------------------------------
+
+module hub_cutout() {
+  zmove(-fuzz) cuboid([x_hub_cutout,y_hub_cutout,b_hub+2*fuzz],anchor=BOTTOM+CENTER);
+}
+
+module hub() {
+  difference() {
+    union() {
+      cuboid([x_hub,y_hub,b_hub],anchor=BOTTOM+CENTER);
+      rect_tube(h=z_hub,isize=[x_hub,y_hub],wall=w2,anchor=BOTTOM+CENTER);
+    }
+    xmove(-x_hub/2+x_hub_cutout_off) hub_cutout();
+    xmove(-x_hub/2+x_hub_cutout_off+3*2.54) hub_cutout();
+    xmove(-x_hub/2+x_hub_cutout_off+6*2.54) hub_cutout();
+    xmove(-x_hub/2+x_hub_cutout_off+9*2.54) hub_cutout();
+  }
+}
+
 // --- top-level object   ----------------------------------------------------
 
 if (TEST) {
   // translate([x_holder,y_holder/2,0]) zrot(-90) ymove(-y_holder) plate();
-  plate(0);
+  //plate(0);
+  hub();
 } else {
-  sensor_holder();
+  //sensor_holder();
+  hub();
 }
