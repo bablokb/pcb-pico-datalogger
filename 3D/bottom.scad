@@ -50,10 +50,6 @@ module corpus_bottom() {
   move([-x_sup_off-fuzz,-y_sup_off-fuzz,0]) pcb_support();
   move([x_sup_off+fuzz,y_sup_off+fuzz,0]) pcb_support();
   move([x_sup_off+fuzz,-y_sup_off-fuzz,0]) pcb_support();
-
-  // cutout LoRa
-  move([x_lora,y_lora,0]) cutout(width1=y2_lora-y1_lora,
-                                 width2=yw_lora,depth=d_lora,h=h,pos=LEFT);
 }
 
 // --- bottom of case   ------------------------------------------------------
@@ -61,10 +57,6 @@ module corpus_bottom() {
 module case_bottom() {
   difference() {
     corpus_bottom();
-    // cutout LoRa
-    h = b + z_sup + z_pcb;
-    move([x_lora-w4,y_lora,0]) cutout(width1=y2_lora-y1_lora-w4,
-                                width2=yw_lora-w4,depth=d_lora,h=h,pos=LEFT);
     // cutout display
     move([x_display_off,y_display_off,-fuzz])
                  cuboid([x_display,y_display,b+2*fuzz],anchor=BOTTOM+CENTER);

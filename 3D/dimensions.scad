@@ -38,4 +38,4 @@ y_cutout = ydelta+w4-gap;
 
 x_lora = -xsize/2 - w4 + d_lora/2;
 y_lora = ysize/2 - y1_lora - (y2_lora-y1_lora)/2;
-z_lora = 4.8;
+z_lora = 8.4;

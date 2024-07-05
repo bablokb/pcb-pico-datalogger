@@ -1,9 +1,6 @@
 // -----------------------------------------------------------------------------
 // 3D-Model (OpenSCAD) case (top) for datalogger.
 //
-// TODOs:
-//  - support ENS160 breakout (?)
-//
 // Author: Bernhard Bablok
 // License: GPL3
 //
@@ -13,7 +10,6 @@
 include <dimensions.scad>
 include <dimensions_top.scad>
 include <shared_modules.scad>
-include <qtpy_sensors.scad>
 include <btn_pcb.scad>
 include <BOSL2/std.scad>
 
@@ -24,9 +20,6 @@ y_off = y_pcb/2-r_pcb;
 
 x_btn_off = 0;                   // offset button-pcb
 y_btn_off = -y_pcb/2+20;
-
-x_qtpy_off = xsize/2 - x_qtpy/2 - 5;
-y_qtpy_off = ysize/2 - y_qtpy/2 - 15;
 
 // --- case (top-part)   -----------------------------------------------------
 
@@ -91,12 +84,10 @@ module case_top() {
     // cutout ADC (add if needed)
     move([-xsize/2,y_adc,h_top-z_adc])
         cuboid([4*w4,(y2_adc-y1_adc),h_top],anchor=BOTTOM+CENTER);
-    // cutout sensor and buttons
-    translate([x_qtpy_off,y_qtpy_off,0]) qtpy_base(b);
+    // cutout buttons
     translate([x_btn_off,y_btn_off,0]) btn_base(b);
   }
-  // sensor-holder and buttons-holder
-  translate([x_qtpy_off,y_qtpy_off,0]) qtpy_sensor(b);
+  // buttons-holder
   translate([x_btn_off,y_btn_off,0]) btn_pcb_holder(b);
 }
 
