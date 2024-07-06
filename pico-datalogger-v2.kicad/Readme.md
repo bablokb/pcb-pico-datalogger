@@ -46,19 +46,19 @@ Wiring is independent of the base-PCB version.
 
 LoRa adapters:
 
-  - **Base PCB to LoRa-adapter 1.00**: 1x8pin **type B**\br
+  - **Base PCB to LoRa-adapter 1.00**: 1x8pin **type B**<br>
     (SURS and sockets on opposite sides of PCB)
-  - **Base PCB to LoRa-adapter 1.20**: 1x8pin **type A**\br
+  - **Base PCB to LoRa-adapter 1.20**: 1x8pin **type A**<br>
     (SURS and sockets on the same side of the PCB)
-  - **Base PCB to LoRa-adapter 1.30**: 1x8pin **type B**\br
+  - **Base PCB to LoRa-adapter 1.30**: 1x8pin **type B**<br>
     (SURS and sockets on the same side of the PCB)
 
 LoRa-PCBs:
 
-  - **Base PCB to LoRa-PCB 0.90**: 1x8pin type **type A**\br
+  - **Base PCB to LoRa-PCB 0.90**: 1x8pin type **type A**<br>
     (0.90 is the 868 MHz version)
-  - **Base PCB to LoRa-PCB 1.00**: 1x8pin type **type A**\br
+  - **Base PCB to LoRa-PCB 1.00**: 1x8pin type **type A**<br>
     (1.00 is the first 433 MHz version, maybe never in production?!)
-  - **Base PCB to LoRa-PCB 1.10**: 1x8pin type **type B**\br
+  - **Base PCB to LoRa-PCB 1.10**: 1x8pin type **type B**<br>
     (1.10 is the second 433 MHz version)
 
