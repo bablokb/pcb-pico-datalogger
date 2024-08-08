@@ -8,7 +8,7 @@
 // -----------------------------------------------------------------------------
 
 include <dimensions.scad>
-include <shared_modules.scad>
+include <stevenson_holder.scad>
 include <BOSL2/std.scad>
 
 x_pcb = 56;
@@ -23,8 +23,8 @@ z_base = z_pcb + 2*w2;
 
 x_foot = 40;   // clearance foot
 z_foot = 10;
-z_bat  = 35;
 
+z_bat  = 35;
 x_bat_off  = 10;
 z_bat_off  =  5;
 
@@ -43,8 +43,15 @@ module connector() {
   color("blue") zmove(-z_foot) cuboid([x_base,y_base,z_foot],anchor=BOTTOM+CENTER);
   // battery holder above connector
   color("blue") zmove(z_base) cuboid([x_base,y_base,z_bat],anchor=BOTTOM+CENTER);
-  // tube around internal Stevenson-holder
-  color("green") move([0,y00_holder/2+w4/2,-z_foot]) holder_tube(); 
+}
+
+// --- screw-holes   -----------------------------------------------------------
+
+module screw_holes(x_pos,z_pos,offset) {
+  move([-x_pos,-fuzz,+z_pos]) cyl(h=y_base+2*fuzz,r=r_pcb,anchor=CENTER,orient=BACK);
+  move([-x_pos,-fuzz,offset]) cyl(h=y_base+2*fuzz,r=r_pcb,anchor=CENTER,orient=BACK);
+  move([+x_pos,-fuzz,+z_pos]) cyl(h=y_base+2*fuzz,r=r_pcb,anchor=CENTER,orient=BACK);
+  move([+x_pos,-fuzz,offset]) cyl(h=y_base+2*fuzz,r=r_pcb,anchor=CENTER,orient=BACK);
 }
 
 // --- holder (connector + cutouts)   ------------------------------------------
@@ -56,14 +63,13 @@ module dl_holder() {
     // screw-holes (holes based on x_pcb, not x_base!)
     x_hole = +x_pcb/2-o_pcb;
     z_hole = +z_pcb-o_pcb; 
-    move([-x_hole,-fuzz,+z_hole]) cyl(h=y_base+2*fuzz,r=r_pcb,anchor=CENTER,orient=BACK);
-    move([-x_hole,-fuzz,o_pcb]) cyl(h=y_base+2*fuzz,r=r_pcb,anchor=CENTER,orient=BACK);
-    move([+x_hole,-fuzz,+z_hole]) cyl(h=y_base+2*fuzz,r=r_pcb,anchor=CENTER,orient=BACK);
-    move([+x_hole,-fuzz,o_pcb]) cyl(h=y_base+2*fuzz,r=r_pcb,anchor=CENTER,orient=BACK);
+    screw_holes(x_hole,z_hole,o_pcb);
 
-    // space for LoRa-PCB connector
-    zmove(-z_foot-fuzz) cuboid([x_foot,100,z_foot+fuzz],anchor=BOTTOM+CENTER);
-    
+    // screw-holes (for 0.94 PCB)
+    x_hole2 = +(x_pcb-10)/2-o_pcb;
+    z_hole2 = +(z_pcb-10)-o_pcb;
+    screw_holes(x_hole2,z_hole2,o_pcb);
+
     // cutouts for battery holder
     move([x_bat_off,-fuzz,z_base+z_bat_off])
                         cuboid([2*w4,y_base+2*fuzz,z_bat],anchor=BOTTOM+CENTER);
@@ -76,12 +82,20 @@ module dl_holder() {
     move([o2_pico,y_base/2-y_pico,z_pcb-z_pico+w2])
              cuboid([x_pico,y_pico,z_pico],anchor=BOTTOM+CENTER);
 
-    // remove some material from tube
-    move([0,y00_holder+y_base/2,z_holder/4])
-                           cuboid([x_base,2*y00_holder,z_holder/3],anchor=BOTTOM+CENTER);
+    // cutouts for bottom_tube
+    move([-(x_holder/2+w4+gap)+w4/2,-fuzz,-z_foot])
+       cuboid([w4+2*gap,y_base+2*fuzz,z_bottom+gap],anchor=BOTTOM+CENTER);
+    move([+(x_holder/2+w4+gap)-w4/2,-fuzz,-z_foot])
+       cuboid([w4+2*gap,y_base+2*fuzz,z_bottom+gap],anchor=BOTTOM+CENTER);
+
+    // cutouts for top_tube
+    move([-(x_holder/2+w4+gap)+w4/2,-fuzz,z_holder-z_top-z_foot-gap])
+       cuboid([w4+2*gap,y_base+2*fuzz,z_top+gap],anchor=BOTTOM+CENTER);
+    move([+(x_holder/2+w4+gap)-w4/2,-fuzz,z_holder-z_top-z_foot-gap])
+       cuboid([w4+2*gap,y_base+2*fuzz,z_top+gap],anchor=BOTTOM+CENTER);
   }
 }
 
 // --- final object   -----------------------------------------------------------
 
-xrot(90) dl_holder();   // rotated for printing
+xrot(-90) dl_holder();   // rotated for printing
