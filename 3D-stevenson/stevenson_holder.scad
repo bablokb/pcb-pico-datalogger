@@ -66,9 +66,11 @@ module bottom_tube() {
       cuboid([2*x_holder,2*y00_holder,z_holder],anchor=BOTTOM+CENTER);
     // cutouts for LoRa holder
     move([x_lora_off,0,z_bottom - z_lora+fuzz])
-      cuboid([w4+2*gap,2*y00_holder,z_lora],anchor=BOTTOM+CENTER);
+      prismoid(size1=[w4,2*y00_holder],
+               size2=[w4+gap,2*y00_holder],h=z_lora,anchor=BOTTOM+CENTER);
     move([-x_lora_off,0,z_bottom - z_lora+fuzz])
-      cuboid([w4+2*gap,2*y00_holder,z_lora],anchor=BOTTOM+CENTER);
+      prismoid(size1=[w4,2*y00_holder],
+               size2=[w4+gap,2*y00_holder],h=z_lora,anchor=BOTTOM+CENTER);
   }
 }
 
