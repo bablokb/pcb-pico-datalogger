@@ -72,9 +72,9 @@ module dl_holder() {
 
     // cutouts for battery holder
     move([x_bat_off,-fuzz,z_base+z_bat_off])
-                        cuboid([2*w4,y_base+2*fuzz,z_bat],anchor=BOTTOM+CENTER);
+                        cuboid([w4+gap,y_base+2*fuzz,z_bat],anchor=BOTTOM+CENTER);
     move([-x_bat_off,-fuzz,z_base+z_bat_off])
-                        cuboid([2*w4,y_base+2*fuzz,z_bat],anchor=BOTTOM+CENTER);
+                        cuboid([w4+gap,y_base+2*fuzz,z_bat],anchor=BOTTOM+CENTER);
     
     // cutouts for pico-connectors (solder joints on the back)
     move([-o1_pico,y_base/2-y_pico,z_pcb-z_pico+w2])
@@ -83,16 +83,16 @@ module dl_holder() {
              cuboid([x_pico,y_pico,z_pico],anchor=BOTTOM+CENTER);
 
     // cutouts for bottom_tube
-    move([-(x_holder/2+w4+gap)+w4/2,-fuzz,-z_foot])
-       cuboid([w4+2*gap,y_base+2*fuzz,z_bottom+gap],anchor=BOTTOM+CENTER);
-    move([+(x_holder/2+w4+gap)-w4/2,-fuzz,-z_foot])
-       cuboid([w4+2*gap,y_base+2*fuzz,z_bottom+gap],anchor=BOTTOM+CENTER);
+    move([-(x_holder/2+w4+gap/2)+w4/2,-fuzz,-z_foot])
+       cuboid([w4+gap,y_base+2*fuzz,z_bottom+gap],anchor=BOTTOM+CENTER);
+    move([+(x_holder/2+w4+gap/2)-w4/2,-fuzz,-z_foot])
+       cuboid([w4+gap,y_base+2*fuzz,z_bottom+gap],anchor=BOTTOM+CENTER);
 
     // cutouts for top_tube
-    move([-(x_holder/2+w4+gap)+w4/2,-fuzz,z_holder-z_top-z_foot-gap])
-       cuboid([w4+2*gap,y_base+2*fuzz,z_top+gap],anchor=BOTTOM+CENTER);
-    move([+(x_holder/2+w4+gap)-w4/2,-fuzz,z_holder-z_top-z_foot-gap])
-       cuboid([w4+2*gap,y_base+2*fuzz,z_top+gap],anchor=BOTTOM+CENTER);
+    move([-(x_holder/2+w4+gap/2)+w4/2,-fuzz,z_holder-z_top-z_foot-gap])
+       cuboid([w4+gap,y_base+2*fuzz,z_top+2*gap],anchor=BOTTOM+CENTER);
+    move([+(x_holder/2+w4+gap/2)-w4/2,-fuzz,z_holder-z_top-z_foot-gap])
+       cuboid([w4+gap,y_base+2*fuzz,z_top+2*gap],anchor=BOTTOM+CENTER);
   }
 }
 
