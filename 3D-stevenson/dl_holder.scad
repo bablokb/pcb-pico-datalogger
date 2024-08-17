@@ -98,4 +98,4 @@ module dl_holder() {
 
 // --- final object   -----------------------------------------------------------
 
-xrot(-90) dl_holder();   // rotated for printing
+// xrot(-90) dl_holder();   // rotated for printing
