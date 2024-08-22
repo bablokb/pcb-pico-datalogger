@@ -10,8 +10,9 @@
 // -----------------------------------------------------------------------------
 
 include <dimensions.scad>
-include <stevenson_holder.scad>
 include <BOSL2/std.scad>
+
+include <stevenson_holder_dims.scad>
 
 x_pcb = 36.5;
 y_pcb = 33.0;
@@ -21,14 +22,23 @@ o_pcb =  3.0;       // offset screw-holes
 x_base = x_pcb + 2*w2;   // increase dimensions for printing
 y_base = y_pcb + 2*w2;
 
+z_strut = 2;
+
 // --- base   -------------------------------------------------------------------
 
 module lora_base() {
   // lora-base plate
   cuboid([x_base,y_base,b],anchor=BOTTOM+CENTER);
+
   // connector for stevenson-holder (offsets from stevenson_holder.scad)
-  move([x_lora_off,y_base/2-z_lora/2,b]) cuboid([w4,z_lora,2*w4],anchor=BOTTOM+CENTER);
-  move([-x_lora_off,y_base/2-z_lora/2,b]) cuboid([w4,z_lora,2*w4],anchor=BOTTOM+CENTER);
+  move([x_lora_off,y_base/2-z_lora/2,b])
+     cuboid([w4,z_lora,2*z_strut],anchor=BOTTOM+CENTER);
+  move([-x_lora_off,y_base/2-z_lora/2,b])
+     cuboid([w4,z_lora,2*z_strut],anchor=BOTTOM+CENTER);
+
+  // distance strut
+  zmove(b-fuzz)
+     cuboid([4*x_lora_off,y_base,z_strut],anchor=BOTTOM+CENTER);
 }
 
 // --- base + cutouts   ---------------------------------------------------------
@@ -43,10 +53,12 @@ module lora_holder() {
     move([-x_hole,+y_hole,-fuzz]) cyl(h=b+2*fuzz,r=r_pcb,anchor=BOTTOM+CENTER); 
     move([-x_hole,-y_hole,-fuzz]) cyl(h=b+2*fuzz,r=r_pcb,anchor=BOTTOM+CENTER); 
     move([+x_hole,+y_hole,-fuzz]) cyl(h=b+2*fuzz,r=r_pcb,anchor=BOTTOM+CENTER); 
-    move([+x_hole,-y_hole,-fuzz]) cyl(h=b+2*fuzz,r=r_pcb,anchor=BOTTOM+CENTER); 
-
-    // cutout stenvenson-holder (from stevenson_holder.scad)
-    ymove(y_base/2+1.5*w4) holder_cutout();
+    move([+x_hole,-y_hole,-fuzz]) cyl(h=b+2*fuzz,r=r_pcb,anchor=BOTTOM+CENTER);
+    
+    // take away from distance strut
+    move([0,-y_base/2,b-fuzz])
+     cuboid([3*x_lora_off,0.75*y_base,z_strut+2*fuzz],anchor=BOTTOM+CENTER);
+    
   }
 }
 
