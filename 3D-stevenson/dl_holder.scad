@@ -72,9 +72,9 @@ module dl_holder() {
 
     // cutouts for battery holder
     move([x_bat_off,-fuzz,z_base+z_bat_off])
-                        cuboid([w4+gap,y_base+2*fuzz,z_bat],anchor=BOTTOM+CENTER);
+       cuboid([2*w4,y_base+2*fuzz,z_bat],anchor=BOTTOM+CENTER);
     move([-x_bat_off,-fuzz,z_base+z_bat_off])
-                        cuboid([w4+gap,y_base+2*fuzz,z_bat],anchor=BOTTOM+CENTER);
+       cuboid([2*w4,y_base+2*fuzz,z_bat],anchor=BOTTOM+CENTER);
     
     // cutouts for pico-connectors (solder joints on the back)
     move([-o1_pico,y_base/2-y_pico,z_pcb-z_pico+w2])
