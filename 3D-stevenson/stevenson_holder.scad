@@ -38,7 +38,7 @@ module holder_cutout() {
 module holder_tube() {
   difference() {
     union() {
-      rect_tube(size1=[x_holder+2*w4+gap,y00_holder+2*w4+gap],
+      ymove(-w4) rect_tube(size1=[x_holder+2*w4+gap,y00_holder+2*w4+gap],
                 size2=[x_holder+2*w4+gap,y60_holder+2*w4+gap],
                 shift=[0,-(y00_holder-y60_holder)/2],
                 h=z_holder,
