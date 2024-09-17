@@ -35,6 +35,9 @@ xo_bmx280 = x_horizontal/2 - bmx280_y_case/2 - 20;
 x_off = x_horizontal/2 - (gap + w4 + r_pcb);
 y_off = y_horizontal/2 - (gap + w4 + r_pcb);
 
+x_co_button = 28;
+y_co_button = 10;
+
 // --- sensor-holder   -------------------------------------------------------
 
 module sensor_holder() {
@@ -54,7 +57,10 @@ module sensor_holder() {
       cyl(h=z_plate+2*fuzz,d=d_screw_h,anchor=BOTTOM+CENTER);
     move([+x_off,y_off,z_plate_screw-fuzz])
       cyl(h=z_plate+2*fuzz,d=d_screw_h,anchor=BOTTOM+CENTER);
-
+    // buttons
+    move([-x_horizontal/2+x_co_button/2-fuzz,-y_horizontal/2+y_co_button/2-fuzz,-fuzz])
+      cuboid([x_co_button,y_co_button,z_plate+2*fuzz],anchor=BOTTOM+CENTER,
+              rounding=r_pcb,edges=RIGHT+BACK);
   }
 }
 
