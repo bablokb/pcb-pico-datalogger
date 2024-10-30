@@ -9,22 +9,9 @@
 
 include <dimensions.scad>
 include <BOSL2/std.scad>
-include <dl_holder.scad>
 
-// imported from dl_holder.scad
-// z_bat  = 35;
-// y_base = 2.6;
-
-x_bat = 34.0;
-y_bat = 19.4;
-
-x_ph2 = 5;
-y_ph2 = 6;
-
-x_onoff = 10;
-xo_onoff = 5;      // offset to the left
-z_onoff = 6;
-zo_onoff = 3;      // offset from base
+include <battery_holder_dims.scad>
+include <dl_holder_dims.scad>
 
 // battery cage   ------------------------------------------------------------
 

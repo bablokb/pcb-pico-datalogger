@@ -1,7 +1,8 @@
 // -----------------------------------------------------------------------------
 // 3D-Model (OpenSCAD) case (bottom) for datalogger.
 //
-// Sensor-holder for the back of the printed case.
+// Sensor-holder for the back of the printed case. This holder adds
+// enclosures for the M5-Stack SCD4x-sensors and for a BMx280-sensor.
 //
 // Author: Bernhard Bablok
 // License: GPL3
@@ -15,102 +16,75 @@ include <dimensions_bottom.scad>
 include <dimensions_foot.scad>
 include <shared_modules.scad>
 include <BOSL2/std.scad>
+include <m5_holder.scad>
+include <bmx280_holder.scad>
 
-TEST = true;
-
-// dimensions M5-Stack CO2-sensor   --------------------------------------------
-
-x_m5 = 24+2*w2;
-y_m5 = 48+2*w2;
-z_m5 = TEST ? 4: 10;
-r_m5 = 3;
-x_grove = 10;
+TEST = false;
 
 // dimensions base-plate   -----------------------------------------------------
-//
-// This is in the same orientation as top.scad. When assembling, the
-// right side ends up at the top.
 
-x_plate   = xsize+2*w4;
-y_plate   = ysize+2*w4 + w4;  // additional wall at the top
-z_plate   = b;
-h_plate_r = z_plate + z_case;  // right
-h_plate_s = z_plate + 8;       // top+bottom sides
-h_plate_l = h_plate_s - w4;    // left
-x_off = x_pcb/2-r_pcb;
-y_off = y_pcb/2-r_pcb;
+z_plate = 1.6;
+z_plate_screw = 0.8;
 
-h_top = 3*b + zsize;     // base-plate + screws + height of standoffs
-z_lora_cutout = 7;
+x_horizontal = ysize+2*w4;
+y_horizontal = 34.4;
 
-// dimensions for standard adafruit-breakout   ---------------------------------
+yo_bmx280 = y_horizontal/2+bmx280_x_case/2-fuzz;
+xo_bmx280 = x_horizontal/2 - bmx280_y_case/2 - 20;
 
-y_stemma     = 8;
-z_stemma     = 3.2;
-z_pcb        = 1.6;
+x_off = x_horizontal/2 - (gap + w4 + r_pcb);
+y_off = y_horizontal/2 - (gap + w4 + r_pcb);
 
-b_breakout = 0.8;
-x_breakout = 25.4  + gap;
-y_breakout = 17.98 + gap;
-z_breakout = z_pcb + z_stemma;
-
-xo_breakout = 10;
-yo_breakout =  2;
-
-// --- standard-breakout from Adafruit   ---------------------------------------
-
-module breakout() {
-  cuboid([x_breakout+2*w2,y_breakout+2*w2,b_breakout],anchor=BOTTOM+CENTER);
-  zmove(b_breakout-fuzz) difference() {
-     // wall around breadboard
-     rect_tube(size=[x_breakout+2*w2,y_breakout+2*w2],wall=w2,h=z_breakout,
-                     anchor=BOTTOM+CENTER);
-     // cutouts for Stemma/Qt
-     translate([-x_breakout/2-w2/2-fuzz,0,0])
-         cuboid([w2+2*fuzz,y_stemma,z_breakout+2*fuzz],anchor=BOTTOM+CENTER);
-     translate([+x_breakout/2+w2/2+fuzz,0,0]) 
-         cuboid([w2+2*fuzz,y_stemma,z_breakout+2*fuzz],anchor=BOTTOM+CENTER);
-   }
-}
-
-// --- standard-breakout from Adafruit   ---------------------------------------
-
-module m5() {
-  cuboid([x_m5,y_m5,b_breakout],anchor=BOTTOM+CENTER,
-               rounding=r_m5,edges="Z");
-  zmove(b_breakout-fuzz) difference() {
-     // wall around sensor
-     rect_tube(size=[x_m5,y_m5],wall=w2,h=z_m5,anchor=BOTTOM+CENTER,
-               rounding=r_m5,irounding=r_m5);
-     // cutout for Grove
-     translate([0,+y_m5/2,0])
-         cuboid([x_grove,2*w2+2*fuzz,z_m5+2*fuzz],anchor=BOTTOM+CENTER);
-   }
-}
-
+x_co_button = 28;
+y_co_button = 10;
 
 // --- sensor-holder   -------------------------------------------------------
 
 module sensor_holder() {
   difference() {
     union() {
-      // base plate + right, top, bottom, left walls
-      cuboid([x_plate,y_plate,z_plate],anchor=BOTTOM+CENTER);
-      xmove(x_plate/2-w4/2)  cuboid([w4,y_plate-2*w4,h_plate_r],anchor=BOTTOM+CENTER,
-            rounding=r_pcb,edges=TOP,except="Y");
-      ymove(y_plate/2-w4/2)  cuboid([x_plate,w4,h_plate_s],anchor=BOTTOM+CENTER);
-      ymove(-y_plate/2+w4/2) cuboid([x_plate,w4,h_plate_s],anchor=BOTTOM+CENTER);
-      xmove(-x_plate/2+w4/2) cuboid([w4,y_plate,h_plate_l],anchor=BOTTOM+CENTER);
+      // horizontal plate
+      cuboid([x_horizontal,y_horizontal,z_plate],anchor=BOTTOM+CENTER,
+              rounding=r_pcb,edges="Z",except=FWD);
     }
-    // cutout for LoRa
-    move([x_plate/2,y_lora,h_top-z_lora])
-                      cuboid([4*w4,z_lora_cutout,z_lora_cutout],anchor=BOTTOM+CENTER);
-
+    // screw-holes
+    move([-x_off,y_off,-fuzz])
+      cyl(h=z_plate,d=d_screw,anchor=BOTTOM+CENTER);
+    move([+x_off,y_off,-fuzz])
+      cyl(h=z_plate,d=d_screw,anchor=BOTTOM+CENTER);
+    // screw-holes (heads)
+    move([-x_off,y_off,z_plate_screw-fuzz])
+      cyl(h=z_plate+2*fuzz,d=d_screw_h,anchor=BOTTOM+CENTER);
+    move([+x_off,y_off,z_plate_screw-fuzz])
+      cyl(h=z_plate+2*fuzz,d=d_screw_h,anchor=BOTTOM+CENTER);
+    // buttons
+    move([-x_horizontal/2+x_co_button/2-fuzz,-y_horizontal/2+y_co_button/2-fuzz,-fuzz])
+      cuboid([x_co_button,y_co_button,z_plate+2*fuzz],anchor=BOTTOM+CENTER,
+              rounding=r_pcb,edges=RIGHT+BACK);
   }
+}
+
+// --- m5 module   -----------------------------------------------------------
+
+module m5() {
+  move([x_off-y_m5/2,-r_pcb,z_plate-b_m5]) zrot(90) m5_holder();
+}
+
+// --- bmx280 module   -------------------------------------------------------
+
+module bmx280() {
+  move([xo_bmx280,-yo_bmx280,0]) zrot(90) bmx280_bottom();
 }
 
 // --- top-level object   ----------------------------------------------------
 
-//sensor_holder();
-m5();
-//breakout();
+difference() {
+  union() {
+    sensor_holder();
+    m5();
+    bmx280();
+  }
+  // for testing prints
+  //move([0,y_horizontal/2-3*r_pcb,-fuzz])
+  // cuboid([2*x_horizontal,100,100],anchor=BOTTOM+BACK);
+}

@@ -11,16 +11,8 @@
 include <dimensions.scad>
 include <BOSL2/std.scad>
 
-x_holder   = 31.1;
-z_holder   = 60.0;
-z_bottom   = 39.0;
-z_top      = 10.0;
-w_holder   =  1.5;
-y00_holder = 10.0;   // y at z=00
-y60_holder =  7.5;   // y at z=60
-
-z_lora = 20.0;
-x_lora_off = 5;
+include <stevenson_holder_dims.scad>
+include <dl_holder_dims.scad>
 
 // --- helper-module (side)   --------------------------------------------------
 
@@ -45,14 +37,18 @@ module holder_cutout() {
 
 module holder_tube() {
   difference() {
-    rect_tube(size1=[x_holder+2*w4+gap,y00_holder+2*w4+gap],
-              size2=[x_holder+2*w4+gap,y60_holder+2*w4+gap],
-              shift=[0,-(y00_holder-y60_holder)/2],
-              h=z_holder,
-              wall=w4,anchor=BOTTOM+CENTER);
-    // remove back
-    ymove(-y00_holder/2-w4)
-           cuboid([x_holder,2*w4,z_holder],anchor=BOTTOM+CENTER);
+    union() {
+      ymove(-w4) rect_tube(size1=[x_holder+2*w4+gap,y00_holder+2*w4+gap],
+                size2=[x_holder+2*w4+gap,y60_holder+2*w4+gap],
+                shift=[0,-(y00_holder-y60_holder)/2],
+                h=z_holder,
+                wall=w4,anchor=BOTTOM+FRONT);
+      // add more depth at the front (slides into dl_holder)
+      cuboid([x_holder+2*w4+gap,y_base,z_holder],anchor=BOTTOM+BACK);
+    }
+    // remove front
+    move([0,-y_base-fuzz,-fuzz])
+       cuboid([x_holder+gap,y_base+w4+2*fuzz,z_holder+2*fuzz],anchor=BOTTOM+FRONT);
   }
 }
 
@@ -62,15 +58,15 @@ module bottom_tube() {
   difference() {
     holder_tube();
     // remove top part
-    zmove(z_bottom)
-      cuboid([2*x_holder,2*y00_holder,z_holder],anchor=BOTTOM+CENTER);
+    move([0,-y_base-fuzz,z_bottom])
+      cuboid([2*x_holder,2*y00_holder,z_holder],anchor=BOTTOM+FRONT);
     // cutouts for LoRa holder
     move([x_lora_off,0,z_bottom - z_lora+fuzz])
       prismoid(size1=[w4,2*y00_holder],
-               size2=[w4+gap,2*y00_holder],h=z_lora,anchor=BOTTOM+CENTER);
+               size2=[w4+gap,2*y00_holder],h=z_lora,anchor=BOTTOM+FRONT);
     move([-x_lora_off,0,z_bottom - z_lora+fuzz])
       prismoid(size1=[w4,2*y00_holder],
-               size2=[w4+gap,2*y00_holder],h=z_lora,anchor=BOTTOM+CENTER);
+               size2=[w4+gap,2*y00_holder],h=z_lora,anchor=BOTTOM+FRONT);
   }
 }
 
@@ -80,8 +76,8 @@ module top_tube() {
   difference() {
     holder_tube();
     // remove bottom part
-    zmove(z_holder-z_top)
-      cuboid([2*x_holder,2*y00_holder,z_holder],anchor=TOP+CENTER);
+    move([0,-y_base-fuzz,z_holder-z_top])
+      cuboid([2*x_holder,2*y00_holder,z_holder],anchor=TOP+FRONT);
   }
 }
 
