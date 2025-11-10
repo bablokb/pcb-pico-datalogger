@@ -1,0 +1,22 @@
+KiCAD-Designfiles for Version 3 PCB
+===================================
+
+Here are the KiCAD (v7) design-files for the Datalogger-V3-PCB.
+
+Schematic
+---------
+
+![](schematic.png)
+
+
+Layout
+------
+
+![](pcb-layout.png)
+
+
+3D-Views
+--------
+
+![](pcb-3D-top.png)
+![](pcb-3D-bottom.png)
