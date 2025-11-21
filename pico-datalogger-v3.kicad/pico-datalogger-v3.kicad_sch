@@ -6,7 +6,7 @@
 
   (title_block
     (title "pico-datalogger-v3")
-    (date "2025-11-20")
+    (date "2025-11-21")
     (rev "3.00")
     (company "Bernhard Bablok")
     (comment 1 "https://github.com/bablokb/pcb-pico-datalogger")
@@ -6159,7 +6159,7 @@
     (property "Value" "Battery" (at 267.97 67.31 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "Battery:BatteryHolder_Keystone_2462_2xAA" (at 269.24 73.406 90)
+    (property "Footprint" "user:BatteryHolder_Keystone_2462_2xAA" (at 269.24 73.406 90)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 269.24 73.406 90)
