@@ -6,7 +6,9 @@ Here are the KiCAD (v7) design-files for the Datalogger-V3-PCB.
 Schematic
 ---------
 
-![](schematic.png)
+![](schematic-main.png)
+![](schematic-lora.png)
+![](schematic-front.png)
 
 
 Layout
@@ -18,5 +20,5 @@ Layout
 3D-Views
 --------
 
-![](pcb-3D-top.png)
-![](pcb-3D-bottom.png)
+![](pcb-3D-inward.png)
+![](pcb-3D-outward.png)
