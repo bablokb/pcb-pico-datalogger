@@ -568,7 +568,7 @@
     (property "Datasheet" "https://www.hoperf.com/data/upload/portal/20181127/5bfcbea20e9ef.pdf" (at -17.78 5.08 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "LCSC" "C2844474" (at 66.04 46.99 0)
+    (property "LCSC" "C2844472" (at 66.04 46.99 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (pin "1" (uuid 0199b172-a933-479f-8528-c9dbc60a6212))

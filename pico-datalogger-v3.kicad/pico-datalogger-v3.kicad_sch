@@ -6,8 +6,8 @@
 
   (title_block
     (title "pico-datalogger-v3")
-    (date "2025-12-29")
-    (rev "3.01")
+    (date "2026-01-15")
+    (rev "3.02")
     (company "Bernhard Bablok")
     (comment 1 "https://github.com/bablokb/pcb-pico-datalogger")
     (comment 2 "https://opendeved.net/ilce")
