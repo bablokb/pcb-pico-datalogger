@@ -14,22 +14,29 @@ Software
 
 PCB
 ---
+
+  - <https://github.com/bablokb//pcb-datalogger-v4e>:
+    Stripped down Pico board for data-logging.
+    No power-management and no XTSD storage, but Ethernet ready.
   - <https://github.com/bablokb//pcb-datalogger-v3>:
-    Pico board for data-logging with power-management and XTSD storage
+    Fully equipped, all-in-one Pico board for data-logging with power-management and XTSD storage.
   - <https://github.com/bablokb//pcb-datalogger-v2>:
-    Pico board for data-logging with power-management and XTSD storage
+    Pico board for data-logging with power-management and XTSD storage. Needs the
+    sensor PCB.
   - <https://github.com/bablokb//pcb-datalogger-sensor-pcb>:
-    Sensor PCB for the Pico Datalogger-v2
+    Sensor PCB for the Pico Datalogger-v2.
+  - <https://github.com/bablokb//pcb-datalogger-display-adapter-v2>:
+    Display-Adapter PCB with socket-connector (for datalogger-v3/v4e).
   - <https://github.com/bablokb//pcb-datalogger-display-adapter>:
-    Display-Adapter PCB
+    Display-Adapter PCB with SUR-connector (for datalogger-v2/v3).
   - <https://github.com/bablokb//pcb-datalogger-lora-adapter>:
-    LoRa-Adapter PCB (adds SUR-Connector to Adafruit-Breakout)
+    LoRa-Adapter PCB (adds SUR-connector to Adafruit-Breakout, for datalogger-v2).
   - <https://github.com/bablokb//pcb-datalogger-lora-pcb>:
-    A PCB with a LoRa tranceiver and a SUR Connector
+    A PCB with a LoRa tranceiver and a SUR connector (for datalogger-v2).
   - <https://github.com/bablokb//pcb-datalogger-v1>:
-    Pico board for data-logging with power-management and XTSD storage
+    First generation Pico board for data-logging with power-management and SD-card storage.
   - <https://github.com/bablokb//pcb-surs-cable-tester>:
-    A small PCB to test the type of a 8-pin SUR cable
+    A small PCB to test the type of a 8-pin SUR cable.
 
 
 3D-Files
